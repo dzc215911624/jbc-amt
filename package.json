@@ -1,0 +1,36 @@
+{
+  "name": "jbc-amt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/amt.cjs.js",
+  "devDependencies": {
+    "@rollup/plugin-html": "^1.0.2",
+    "glob": "^10.0.0",
+    "install": "^0.13.0",
+    "jsdoc": "^4.0.2",
+    "npm": "^9.6.4",
+    "open": "^9.1.0",
+    "rollup": "^2.79.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^2.0.2",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "scripts": {
+    "dev": "rollup --c -w --environment INCLUDE_DEPS,BUILD:development",
+    "build": "rollup -c -w --environment INCLUDE_DEPS,BUILD:production",
+    "lint": "eslint -c .eslintrc.js src --fix",
+    "doc": "jsdoc dist/amt.cjs.js -c ./doc_conf.js -d ./readme && node server.mjs"
+  },
+  "author": "loading",
+  "license": "ISC",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dzc215911624/jbc-amt.git"
+  }
+}

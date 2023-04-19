@@ -1,0 +1,19 @@
+.DS_Store
+node_modules/
+# index.html
+# out
+# .gitignore
+# rollup.config.js
+.editorconfig
+.babelrc
+*.tgz
+# src
+# server.mjs
+# .eslintrc.js
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
