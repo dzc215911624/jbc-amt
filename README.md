@@ -51,7 +51,7 @@ console.log(amt.uuid());
 
 ```javascript
 // 基础类
-1.uuid()    // 获取uuid，可以当作唯一字符串使用
+1.uuid()      // 获取uuid，可以当作唯一字符串使用
 2.type(obj)   // 确定JavaScript内置对象的类型，并返回小写形式的类型名称。
 3.isIP(str)   // 判断是否为IP地址 是返回true
 

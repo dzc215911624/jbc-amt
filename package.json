@@ -1,6 +1,6 @@
 {
   "name": "jbc-amt",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "dist/amt.cjs.js",
   "devDependencies": {
@@ -24,9 +24,9 @@
     "dev": "rollup --c -w --environment INCLUDE_DEPS,BUILD:development",
     "build": "rollup -c -w --environment INCLUDE_DEPS,BUILD:production",
     "lint": "eslint -c .eslintrc.js src --fix",
-    "doc": "jsdoc dist/amt.cjs.js -c ./doc_conf.js -d ./readme && node server.mjs"
+    "doc": "jsdoc dist/amt.cjs.js -c ./doc_conf.js -R README.md -d ./readme && node server.mjs"
   },
-  "author": "loading",
+  "author": "sy",
   "license": "ISC",
   "private": false,
   "repository": {
