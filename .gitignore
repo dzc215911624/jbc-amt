@@ -1,15 +1,19 @@
 .DS_Store
 node_modules/
-# index.html
-# out
-# .gitignore
-# rollup.config.js
 .editorconfig
 .babelrc
 *.tgz
+
+
+# index.html
+# readme/**
+# .gitignore
+# rollup.config.js
 # src
 # server.mjs
 # .eslintrc.js
+# doc_conf.js
+# layout.tmpl 
 
 # Editor directories and files
 .idea

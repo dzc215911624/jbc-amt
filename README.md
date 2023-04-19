@@ -5,8 +5,6 @@ README
 
   jbc-amt
   * 旨在打造一个在主流框架中例如vue2/3、nuxt、react、next中都可以使用的 方法集和工具类
-  * 昵称：`laoding`
-  * 邮箱：<215911624@qq.com>
 
 ## jbc-amt
 
