@@ -13,5 +13,6 @@ typeStr.split(' ').map(name => {
 const type = val => {
   return typeof val === 'object' || typeof val === 'function' ? class2type[toString.call(val)] || 'object' : typeof val;
 };
+const $type = type
 
-export default type;
+export { type, $type };

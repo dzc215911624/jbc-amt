@@ -52,6 +52,7 @@ typeStr.split(' ').map(name => {
 const type = val => {
   return typeof val === 'object' || typeof val === 'function' ? class2type[toString.call(val)] || 'object' : typeof val;
 };
+const $type = type;
 
 //自定义位数唯一标识符
 const uuid = () => {
@@ -230,6 +231,40 @@ function rda(arr, isObject, key) {
   }
 }
 
+/**
+ * @desc 换行 str以float分割并以tag来换行
+ * @param {String} str 要换行的字符串
+ * @param {String} float 以float字符分割 默认','
+ * @param {String} tag 以tag来换行 默认'br换行标签'
+ * @return {String} 返回整理后带换行tag的字符串
+ * 例如：type([]) ==> 'array'
+ */
+let warp = (str, float, tag) => {
+  if (!str) {
+    return;
+  }
+  if ($type(str) !== 'string') {
+    return;
+  }
+  float = float === undefined ? ',' : float;
+  tag = tag === undefined ? '&lt;br />' : tag;
+  let temp = str.split(float).reduce((prev, item, index, arr) => {
+    if (arr.length - 1 === index) {
+      prev += item;
+    } else {
+      prev += `${item}${tag}`;
+    }
+    return prev;
+  }, '');
+  return temp;
+};
+(function () {
+  // 添加到String原型链上
+  String.prototype.warp = function (float, tag) {
+    return warp(this, float, tag);
+  };
+})();
+
 // 基础类
 const version = '1.1.1';
 
@@ -241,7 +276,8 @@ const jbc = {
   debounce,
   rda,
   uuid,
-  isIP
+  isIP,
+  warp
 };
 
 module.exports = jbc;
@@ -255,7 +291,7 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
 </nav>
 
 <br class="clear">

@@ -5,6 +5,15 @@ node_modules/
 *.tgz
 
 
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 以下发布npm时注销，github打开
+
 # index.html
 # readme/**
 # .gitignore
@@ -14,10 +23,3 @@ node_modules/
 # .eslintrc.js
 # doc_conf.js
 # layout.tmpl 
-
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
