@@ -52,6 +52,9 @@ console.log(amt.uuid());
 1.uuid()      // 获取uuid，可以当作唯一字符串使用
 2.type(obj)   // 确定JavaScript内置对象的类型，并返回小写形式的类型名称。
 3.isIP(str)   // 判断是否为IP地址 是返回true
+4.qs(obj)     // 对象转qs请求字符串 返回:请求参数拼接字符串 {id:123,name:'xiaoming'} => id=123&name=xiaoming
+5.isNull(any) // 判断是否为空 返回true/false
+6.callback(fn, data)  // fn 回调函数, data 回调数据, 返回fn(data)
 
 // 数组类
 1.rda(arr, isObject, key) → {Array} // 去重

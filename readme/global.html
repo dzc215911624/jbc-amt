@@ -113,6 +113,190 @@
     
 
     
+    <h4 class="name" id="callback"><span class="type-signature"></span>callback<span class="signature">(fn, data)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    
+
+    
+    <p class="summary"><p>公共回调</p>.</p>
+    
+
+
+
+<div class="description">
+    <P>公共回调</P>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>回调函数</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>回调数据</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>返回fn(data)</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="debounce"><span class="type-signature"></span>debounce<span class="signature">(callback, delay, immediate)</span><span class="type-signature"></span></h4>
     
 
@@ -262,7 +446,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line114">line 114</a>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -411,7 +595,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line57">line 57</a>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -452,6 +636,328 @@
     <dd>
         
 <span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isNull"><span class="type-signature"></span>isNull<span class="signature">(val)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+    <p class="summary"><p>判断是否为空</p>.</p>
+    
+
+
+
+<div class="description">
+    <P>判断是否为空</P>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>输入任意值</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>返回true/false, number类型的直接返回false</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="qs"><span class="type-signature"></span>qs<span class="signature">(obj)</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+    <p class="summary"><p>对象转qs请求字符串</p>.</p>
+    
+
+
+
+<div class="description">
+    <P>对象转QS请求字符串</P>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>对象</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>返回:请求参数拼接字符串 {id:123,name:'xiaoming'} =&gt; id=123&amp;name=xiaoming</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
 
 
     </dd>
@@ -618,7 +1124,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line150">line 150</a>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line213">line 213</a>
     </li></ul></dd>
     
 
@@ -825,7 +1331,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line75">line 75</a>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -1182,7 +1688,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line205">line 205</a>
+        <a href="amt.cjs.js.html">amt.cjs.js</a>, <a href="amt.cjs.js.html#line268">line 268</a>
     </li></ul></dd>
     
 
@@ -1251,7 +1757,7 @@
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
 </nav>
 
 <br class="clear">

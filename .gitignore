@@ -14,12 +14,12 @@ node_modules/
 
 # 以下发布npm时注销，github打开
 
-# index.html
-# readme/**
-# .gitignore
-# rollup.config.js
-# src
-# server.mjs
-# .eslintrc.js
-# doc_conf.js
-# layout.tmpl 
+index.html
+readme/**
+.gitignore
+rollup.config.js
+src
+server.mjs
+.eslintrc.js
+doc_conf.js
+layout.tmpl 

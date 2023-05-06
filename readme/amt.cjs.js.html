@@ -54,6 +54,50 @@ const type = val => {
 };
 const $type = type;
 
+// 判断指定参数是否是一个空对象。
+const isEmptyObject = obj => {
+  for (let name in obj) {
+    return false;
+  }
+  return true;
+};
+
+/**
+ * @desc 判断是否为空
+ * @param {Any} val 输入任意值
+ * @return {Boolean} 返回true/false, number类型的直接返回false
+ */
+const isNull = val => {
+  switch (type(val)) {
+    case 'string':
+      return !!(val === null || val === undefined || val === '');
+    case 'array':
+      return !!(val === null || val === undefined || val === [] || val.length === 0);
+    case 'number':
+      return false;
+    case 'object':
+      return isEmptyObject(val);
+    case 'boolean':
+      return val;
+    case 'function':
+      return val;
+    default:
+      return !!(val === null || val === undefined);
+  }
+};
+
+/**
+ * @desc 公共回调
+ * @param {Object} fn 回调函数
+ * @param {Any} data 回调数据
+ * @return {Function} 返回fn(data)
+ */
+let callback = (fn, data) => {
+  if (fn &amp;&amp; type(fn) == 'function' &amp;&amp; fn(data)) {
+    return fn(data);
+  }
+};
+
 //自定义位数唯一标识符
 const uuid = () => {
   // 如果浏览器支持crypto
@@ -100,6 +144,25 @@ const isIP = url => {
   } else {
     return true;
   }
+};
+
+/**
+ * @desc 对象转qs请求字符串
+ * @param {Object} obj 对象
+ * @return {String} 返回:请求参数拼接字符串 {id:123,name:'xiaoming'} => id=123&amp;name=xiaoming
+ */
+const qs = obj => {
+  let str = '';
+  Object.keys(obj).map((name, index) => {
+    console.log(name, 'name');
+    let value = obj[name];
+    if (value === '?' || value === '&amp;') {
+      value = encodeURIComponent(obj[name]);
+      console.log(value);
+    }
+    str += index === 0 ? `${name}=${value}` : `&amp;${name}=${value}`;
+  });
+  return str;
 };
 
 /**
@@ -268,10 +331,13 @@ let warp = (str, float, tag) => {
 // 基础类
 const version = '1.1.1';
 
-// 集中在一个对象中，减少层级,方便直接导出
+// 集中在一个对象中,方便直接导出
 const jbc = {
   version,
+  callback,
   type,
+  isNull,
+  qs,
   throttle,
   debounce,
   rda,
@@ -291,7 +357,7 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
 </nav>
 
 <br class="clear">
