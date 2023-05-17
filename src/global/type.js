@@ -42,6 +42,8 @@ const isNull = val => {
     return val;
   case 'function':
     return val;
+  case 'date':
+    return isNaN(val.getTime());
   default:
     return !!(val === null || val === undefined);
   }

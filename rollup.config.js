@@ -13,6 +13,8 @@ import cleanup from 'rollup-plugin-cleanup';
 
 import copy from 'rollup-plugin-copy';
 
+import path from "path";
+
 
 // import glob from 'glob';
 // import path from 'node:path';
@@ -59,7 +61,15 @@ export default {
     {
       file: 'dist/amt.cjs.js',
       format: 'cjs',// CommonJS, 适用于Node或Browserify/webpack
-      exports: 'auto',
+      exports: 'auto', // 指定导出模式（自动、默认、命名、无）
+    },
+    {
+      dir: path.dirname('dist/amt.cjs.js'),
+      format: 'cjs',// CommonJS, 适用于Node或Browserify/webpack
+      // exports: 'auto',
+      exports: 'auto', // 指定导出模式（自动、默认、命名、无）
+      preserveModules: true, // 保留模块结构
+      // preserveModulesRoot: 'src', // 将保留的模块放在根级别的此路径下}
       // sourcemap: true,
     }
   ],
@@ -89,20 +99,22 @@ export default {
       configFile: '.eslintrc.js', // ESLint 配置文件路径
       fix: true // 自动修复 ESLint 错误
     }),
-    process.env.BUILD === "production" && copy({
-      targets: [
-        { src: 'src/array/*', dest: 'dist' },
-        { src: 'src/canvas/*', dest: 'dist' },
-        { src: 'src/global/*', dest: 'dist' },
-        { src: 'src/optimize/*', dest: 'dist' },
-        { src: 'src/string/*', dest: 'dist' },
-      ],
-      flatten: true,
-      verbose: true
-    }),
     // 清理注释
     process.env.BUILD === "production" && cleanup(),
     // 压缩、混淆代码
-    process.env.BUILD === "production" && terser()
+    process.env.BUILD === "production" && terser(),
+    process.env.BUILD === "production" && copy({
+      targets: [
+        { src: 'dist/array/*', dest: 'dist' },
+        { src: 'dist/date/*', dest: 'dist' },
+        { src: 'dist/canvas/*', dest: 'dist' },
+        { src: 'dist/global/*', dest: 'dist' },
+        { src: 'dist/optimize/*', dest: 'dist' },
+        { src: 'dist/string/*', dest: 'dist' },
+      ],
+      flatten: true,
+      verbose: true,
+      hook: "writeBundle" //buildStart、buildEnd、generateBundle、writeBundle 
+    }),
   ],
 }

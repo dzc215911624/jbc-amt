@@ -81,6 +81,8 @@ const isNull = val => {
       return val;
     case 'function':
       return val;
+    case 'date':
+      return isNaN(val.getTime());
     default:
       return !!(val === null || val === undefined);
   }
@@ -129,7 +131,6 @@ const uuid = () => {
   });
 };
 
-//判断是否为IP地址 是返回true
 /**
  * @desc 判断是否为IP地址
  * @param {String} url 输入地址
@@ -154,15 +155,84 @@ const isIP = url => {
 const qs = obj => {
   let str = '';
   Object.keys(obj).map((name, index) => {
-    console.log(name, 'name');
     let value = obj[name];
     if (value === '?' || value === '&amp;') {
       value = encodeURIComponent(obj[name]);
-      console.log(value);
     }
     str += index === 0 ? `${name}=${value}` : `&amp;${name}=${value}`;
   });
   return str;
+};
+
+//字符串时间转成Date数据
+const strToDate = dateObj => {
+  if ($type(dateObj) === 'string') {
+    dateObj = dateObj.replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').replace(/(-)/g, '/');
+    if (dateObj.indexOf('.') > 0) {
+      dateObj = dateObj.slice(0, dateObj.indexOf('.'));
+    }
+    return new Date(dateObj);
+  } else {
+    return dateObj;
+  }
+};
+
+/**
+ * @desc 转化为任意格式的时间输出
+ * @param {Any} date 时间
+ * @param {String} fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq EEE  默认：yyyy-MM-dd
+ * @return {String} 返回:相应fmt格式
+ */
+const dateFormatAny = (date, fmt) => {
+  date = strToDate(date);
+  fmt = isNull(fmt) ? 'yyyy-MM-dd' : fmt;
+  if (!isNull(date)) {
+    date = new Date(date);
+    let o = {
+      //月份  
+      'M+': date.getMonth() + 1,
+      //日 
+      'd+': date.getDate(),
+      //小时   
+      'h+': date.getHours(),
+      //分   
+      'm+': date.getMinutes(),
+      //秒   
+      's+': date.getSeconds(),
+      //毫秒   
+      'S': date.getMilliseconds(),
+      //季度  
+      'q+': Math.floor((date.getMonth() + 3) / 3)
+    };
+    let week = {
+      0: '日',
+      1: '一',
+      2: '二',
+      3: '三',
+      4: '四',
+      5: '五',
+      6: '六'
+    };
+    if (/(y+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substring(4 - RegExp.$1.length));
+    }
+    if (/(W+)/.test(fmt)) {
+      let zhou = '';
+      if (RegExp.$1.length > 1) {
+        if (RegExp.$1.length > 2) {
+          zhou = '星期';
+        } else {
+          zhou = '周';
+        }
+      } else {
+        zhou = '周';
+      }
+      fmt = fmt.replace(RegExp.$1, zhou + week[date.getDay().toString() + '']);
+    }
+    for (var k in o) if (new RegExp('(' + k + ')').test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substring(('' + o[k]).length));
+    return fmt;
+  }
+  return isNull(date) ? false : date;
 };
 
 /**
@@ -343,7 +413,8 @@ const jbc = {
   rda,
   uuid,
   isIP,
-  warp
+  warp,
+  dateFormatAny
 };
 
 module.exports = jbc;
@@ -357,13 +428,14 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    aaa
+    轻自营B端FE公共类库
+    <a href="https://www.npmjs.com/package/jbc-amt" target="_blank">npm地址</a>
 </footer>
 
 <script> prettyPrint(); </script>

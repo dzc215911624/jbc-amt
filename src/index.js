@@ -4,6 +4,7 @@ import { type, isNull, callback } from './global/type'
 import uuid from './global/uuid'
 import isIP from './global/isIP'
 import qs from './global/qs'
+import dateFormatAny from './date/dateFormatAny'
 
 // 优化类
 import throttle from './optimize/throttle'
@@ -28,7 +29,8 @@ const jbc = {
   rda,
   uuid,
   isIP,
-  warp
+  warp,
+  dateFormatAny
 }
 
 export default jbc

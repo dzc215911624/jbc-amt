@@ -66,6 +66,9 @@ console.log(amt.uuid());
 // 字符串类
 1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，同时是String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
 
+// 时间类
+1.dateFormatAny(date,fmt) // 识别时间意图的参数转化为任意格式的时间输出 date 时间，fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq EEE  默认：yyyy-MM-dd
+
 
 ```
 

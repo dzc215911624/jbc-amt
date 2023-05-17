@@ -1,4 +1,3 @@
-//判断是否为IP地址 是返回true
 /**
  * @desc 判断是否为IP地址
  * @param {String} url 输入地址

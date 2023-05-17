@@ -3,7 +3,12 @@ node_modules/
 .editorconfig
 .babelrc
 *.tgz
-
+dist/array
+dist/date
+dist/global
+dist/optimize
+dist/string
+dist/index.js
 
 # Editor directories and files
 .idea
@@ -12,14 +17,14 @@ node_modules/
 *.njsproj
 *.sln
 
-# 以下发布npm时注销，github打开
+# 以下发布npm时打开，github注销
 
-index.html
-readme/**
-.gitignore
-rollup.config.js
-src
-server.mjs
-.eslintrc.js
-doc_conf.js
-layout.tmpl 
+# index.html
+# readme/**
+# .gitignore
+# rollup.config.js
+# src
+# server.mjs
+# .eslintrc.js
+# doc_conf.js
+# layout.tmpl 
