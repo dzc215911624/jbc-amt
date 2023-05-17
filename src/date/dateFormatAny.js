@@ -16,7 +16,7 @@ const strToDate = dateObj => {
 /**
  * @desc 转化为任意格式的时间输出
  * @param {Any} date 时间
- * @param {String} fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq EEE  默认：yyyy-MM-dd
+ * @param {String} fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
  * @return {String} 返回:相应fmt格式
  */
 const dateFormatAny = (date, fmt) => {
