@@ -27,12 +27,11 @@ let warp = (str, float, tag) => {
   }, '');
   return temp;
 };
-
 (function () {
   // 添加到String原型链上
   String.prototype.warp = function (float, tag) {
     return warp(this, float, tag);
   };
-}());
+})();
 
 export default warp;

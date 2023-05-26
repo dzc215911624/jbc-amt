@@ -4,6 +4,8 @@ import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 // resolve、commonjs：用于兼容可以依赖 commonjs 规范的包。
 import serve from 'rollup-plugin-serve';
+// 热更
+import livereload from "rollup-plugin-livereload";
 // 压缩
 import { terser } from 'rollup-plugin-terser';
 // 代码检查
@@ -56,17 +58,16 @@ export default {
       file: 'dist/amt.es.js',
       format: 'es',// 将软件包保存为ES模块文件。
       name: 'amt',
-      // sourcemap: true,
+      sourcemap: true,
     },
     {
       file: 'dist/amt.cjs.js',
       format: 'cjs',// CommonJS, 适用于Node或Browserify/webpack
-      exports: 'auto', // 指定导出模式（自动、默认、命名、无）
+      exports: 'auto', // 指定导出模式（auto、default、named、无）
     },
     {
-      dir: path.dirname('dist/amt.cjs.js'),
-      format: 'cjs',// CommonJS, 适用于Node或Browserify/webpack
-      // exports: 'auto',
+      dir: path.dirname('dist/amt.es.js'),
+      format: 'es',// CommonJS, 适用于Node或Browserify/webpack
       exports: 'auto', // 指定导出模式（自动、默认、命名、无）
       preserveModules: true, // 保留模块结构
       // preserveModulesRoot: 'src', // 将保留的模块放在根级别的此路径下}
@@ -91,6 +92,7 @@ export default {
       contentBase: ['./'],
       port: 3000
     }),
+    process.env.BUILD === "development" && livereload(),
     eslint({
       throwOnError: true,
       throwOnWarning: true,
@@ -102,7 +104,7 @@ export default {
     // 清理注释
     process.env.BUILD === "production" && cleanup(),
     // 压缩、混淆代码
-    process.env.BUILD === "production" && terser(),
+    process.env.BUILD === "production" && terser({ compress: { drop_console: true } }),
     process.env.BUILD === "production" && copy({
       targets: [
         { src: 'dist/array/*', dest: 'dist' },

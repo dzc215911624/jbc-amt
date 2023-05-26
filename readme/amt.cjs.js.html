@@ -35,7 +35,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>'use strict';
+            <pre class="prettyprint source linenums"><code>
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+'use strict';
 
 let class2type = {};
 const typeStr = 'Boolean Number String Function Array Date RegExp Object Error';
@@ -180,7 +182,7 @@ const strToDate = dateObj => {
 /**
  * @desc 转化为任意格式的时间输出
  * @param {Any} date 时间
- * @param {String} fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq EEE  默认：yyyy-MM-dd
+ * @param {String} fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
  * @return {String} 返回:相应fmt格式
  */
 const dateFormatAny = (date, fmt) => {
@@ -233,6 +235,91 @@ const dateFormatAny = (date, fmt) => {
     return fmt;
   }
   return isNull(date) ? false : date;
+};
+
+var time = {
+  year: new Date().getFullYear(),
+  month: new Date().getMonth() + 1,
+  day: new Date().getDate()
+};
+
+/**
+ * @desc 获取今日起始时间
+ * @param {String} fmt 以什么格式输出：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+ * @return {Array} 返回:[start,end]
+ */
+var today = function today(fmt) {
+  fmt = fmt === undefined ? 'yyyy-MM-dd' : fmt;
+  var start = new Date().getTime(),
+    end = start;
+  return [dateFormatAny(start, fmt), dateFormatAny(end, fmt)];
+};
+
+/**
+ * @desc 获取昨日起始时间
+ * @param {String} fmt 以什么格式输出：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+ * @return {Array} 返回:[start,end]
+ */
+var yesterday = function yesterday(fmt) {
+  fmt = fmt === undefined ? 'yyyy-MM-dd' : fmt;
+  var start = new Date().getTime() - 3600 * 24 * 1000,
+    end = start;
+  return [dateFormatAny(start, fmt), dateFormatAny(end, fmt)];
+};
+
+/**
+ * @desc 获取上月起始时间
+ * @param {String} fmt 以什么格式输出：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+ * @return {Array} 返回:[start,end]
+ */
+var prevMonth = function prevMonth(fmt) {
+  fmt = fmt === undefined ? 'yyyy-MM-dd' : fmt;
+  var temp = {};
+  // 如果是一月份
+  if (time.month === 1) {
+    // 年份减一
+    temp.year = time.year - 1;
+    temp.month = 12;
+  } else {
+    temp.year = time.year;
+    temp.month = time.month - 1;
+  }
+  temp.day = time.day;
+
+  // 获取当月有多少天
+  var days = new Date(temp.year, temp.month, 0).getDate(),
+    start = new Date(''.concat(temp.year, '-').concat(temp.month, '-1')).getTime(),
+    end = new Date(''.concat(temp.year, '-').concat(temp.month, '-').concat(days)).getTime();
+  return [dateFormatAny(start, fmt), dateFormatAny(end, fmt)];
+};
+
+/**
+ * @desc 获取本月起始时间
+ * @param {Boolean} isSofar 结束时间是否截止到今天 默认false
+ * @param {String} fmt 以什么格式输出：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+ * @return {Array} 返回:[start,end]
+ */
+var thisMonth = function thisMonth(isSofar, fmt) {
+  fmt = fmt === undefined ? 'yyyy-MM-dd' : fmt;
+  isSofar = !!isSofar;
+  var days = new Date(time.year, time.month, 0).getDate(),
+    start = new Date(''.concat(time.year, '-').concat(time.month, '-1')).getTime(),
+    end = new Date(''.concat(time.year, '-').concat(time.month, '-').concat(isSofar ? time.day : days)).getTime();
+  return [dateFormatAny(start, fmt), dateFormatAny(end, fmt)];
+};
+
+/**
+ * @desc 获取近多少天的起始时间
+ * @param {Number} days 天数
+ * @param {String} fmt 以什么格式输出：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+ * @return {Array} 返回:[start,end]
+ */
+var pastDays = function pastDays(days, fmt) {
+  fmt = fmt === undefined ? 'yyyy-MM-dd' : fmt;
+  days = days === undefined ? 30 : days;
+  var start = new Date().getTime() - 3600 * 1000 * 24 * days,
+    end = new Date().getTime() - 3600 * 1000 * 24 * 1;
+  return [dateFormatAny(start, fmt), dateFormatAny(end, fmt)];
 };
 
 /**
@@ -403,18 +490,29 @@ const version = '1.1.1';
 
 // 集中在一个对象中,方便直接导出
 const jbc = {
+  // 全局参数
   version,
+  // 公共类
   callback,
   type,
   isNull,
   qs,
+  isIP,
+  // 优化类
   throttle,
   debounce,
+  // 数组类
   rda,
+  // 字符串类
   uuid,
-  isIP,
   warp,
-  dateFormatAny
+  // 时间类
+  dateFormatAny,
+  today,
+  yesterday,
+  prevMonth,
+  thisMonth,
+  pastDays
 };
 
 module.exports = jbc;
@@ -428,7 +526,7 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">

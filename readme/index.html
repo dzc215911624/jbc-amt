@@ -56,7 +56,7 @@
 <h2>说明</h2>
 <p>jbc-amt</p>
 <ul>
-<li>旨在打造一个在主流框架中例如vue2/3、nuxt、react、next中都可以使用的 方法集和工具类</li>
+<li>旨在打造一个在主流框架中例如 vue2/3、nuxt、react、next 中都可以使用的 方法集和工具类</li>
 </ul>
 <h2>jbc-amt</h2>
 <blockquote>
@@ -70,17 +70,17 @@ npm i jbc-amt
 </code></pre>
 <ul>
 <li>支持按需引用</li>
-<li>所有方法都提取到一级，完整引入的话可以直接以xxx.methods这种格式使用</li>
+<li>所有方法都提取到一级，完整引入的话可以直接以 xxx.methods 这种格式使用</li>
 </ul>
 <pre class="prettyprint source lang-javascript"><code>import { uuid, type } from &quot;jbc-amt&quot;;
-或
+或;
 import amt from &quot;jbc-amt&quot;;
 </code></pre>
 <ul>
-<li>安装完毕，举个栗子获取uuid</li>
+<li>安装完毕，举个栗子获取 uuid</li>
 </ul>
 <pre class="prettyprint source lang-javascript"><code>console.log(uuid());
-或
+或;
 console.log(amt.uuid());
 </code></pre>
 <hr>
@@ -107,10 +107,65 @@ console.log(amt.uuid());
 // 字符串类
 1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，同时是String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
 
-// 时间类
-1.dateFormatAny(date,fmt) // 识别时间意图的参数转化为任意格式的时间输出 date 时间，fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq EEE  默认：yyyy-MM-dd
-
-
+</code></pre>
+<h3>时间标识对照表</h3>
+<table>
+<thead>
+<tr>
+<th>标识</th>
+<th>对应时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>yyyy</code></td>
+<td>年</td>
+</tr>
+<tr>
+<td><code>MM</code></td>
+<td>月</td>
+</tr>
+<tr>
+<td><code>dd</code></td>
+<td>日</td>
+</tr>
+<tr>
+<td><code>hh</code></td>
+<td>小时</td>
+</tr>
+<tr>
+<td><code>mm</code></td>
+<td>分钟</td>
+</tr>
+<tr>
+<td><code>ss</code></td>
+<td>秒</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>毫秒</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>季度</td>
+</tr>
+<tr>
+<td><code>WW</code></td>
+<td>周几</td>
+</tr>
+<tr>
+<td><code>WWW</code></td>
+<td>星期几</td>
+</tr>
+</tbody>
+</table>
+<pre class="prettyprint source lang-javascript"><code>// 时间类
+// 支持格式：yyyy-MM-dd hh:mm:ss:S qq WW+
+1.dateFormatAny(date,fmt) // 识别时间意图的参数转化为任意格式的时间输出 date 时间，fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+2.today(fmt) // 获取今日起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
+3.yesterday(fmt)  // 获取昨日起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
+4.thisMonth(isSofar, fmt) // 获取本月起始时间 isSofar结束时间是否截止到今天 默认：false, fmt默认：yyyy-MM-dd 返回[start,end]
+5.prevMonth(fmt) // 获取上月起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
 </code></pre>
 <hr>
 <p><a href="#readme">回到顶部</a></p></article>
@@ -124,7 +179,7 @@ console.log(amt.uuid());
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">

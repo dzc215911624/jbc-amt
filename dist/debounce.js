@@ -1,1 +1,1 @@
-"use strict";module.exports=(t,e,u)=>{var l;return e=null==e?16.6:e,u=null==u||u,function(){var i=this,n=arguments;if(l&&clearTimeout(l),u){var o=!l;l=setTimeout((function(){t.apply(i,n)}),e),o&&t.apply(i,n)}else l=setTimeout((function(){t.apply(i,n)}),e)}};
+const t=(t,e,l)=>{var n;return e=null==e?16.6:e,l=null==l||l,function(){var u=this,a=arguments;if(n&&clearTimeout(n),l){var i=!n;n=setTimeout((function(){t.apply(u,a)}),e),i&&t.apply(u,a)}else n=setTimeout((function(){t.apply(u,a)}),e)}};export{t as default};

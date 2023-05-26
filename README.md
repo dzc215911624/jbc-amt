@@ -1,10 +1,11 @@
-README
-===========================
+# README
 
 ## 说明
 
-  jbc-amt
-  * 旨在打造一个在主流框架中例如vue2/3、nuxt、react、next中都可以使用的 方法集和工具类
+jbc-amt
+
+- 旨在打造一个在主流框架中例如 vue2/3、nuxt、react、next 中都可以使用的 方法集和工具类
+- 纯模块方法，如需挂载的请自行处理，例如vue下可尝试install()挂载全局方法
 
 ## jbc-amt
 
@@ -12,28 +13,27 @@ README
 
 ## 安装
 
-``` javascript
+```javascript
 # install
 npm install jbc-amt
 或者
 npm i jbc-amt
 ```
 
-* 支持按需引用
-* 所有方法都提取到一级，完整引入的话可以直接以xxx.methods这种格式使用
-
+- 支持按需引用
+- 所有方法都提取到一级，完整引入的话可以直接以 xxx.methods 这种格式使用
 
 ```javascript
 import { uuid, type } from "jbc-amt";
-或
+或;
 import amt from "jbc-amt";
 ```
 
-* 安装完毕，举个栗子获取uuid
+- 安装完毕，举个栗子获取 uuid
 
 ```javascript
 console.log(uuid());
-或
+或;
 console.log(amt.uuid());
 ```
 
@@ -41,9 +41,7 @@ console.log(amt.uuid());
 
 ## 新增或调整
 
-* 
-
-
+-
 
 ## 全局变量和方法
 
@@ -66,12 +64,33 @@ console.log(amt.uuid());
 // 字符串类
 1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，同时是String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
 
-// 时间类
-1.dateFormatAny(date,fmt) // 识别时间意图的参数转化为任意格式的时间输出 date 时间，fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
-
-
 ```
 
-----
+### 时间标识对照表
+
+| 标识   | 对应时间 |
+| ------ | -------- |
+| `yyyy` | 年       |
+| `MM`   | 月       |
+| `dd`   | 日       |
+| `hh`   | 小时     |
+| `mm`   | 分钟     |
+| `ss`   | 秒       |
+| `S`    | 毫秒     |
+| `q`    | 季度     |
+| `WW`   | 周几     |
+| `WWW`  | 星期几   |
+
+```javascript
+// 时间类
+// 支持格式：yyyy-MM-dd hh:mm:ss:S qq WW+
+1.dateFormatAny(date,fmt) // 识别时间意图的参数转化为任意格式的时间输出 date 时间，fmt 格式化方式 全格式：yyyy-MM-dd hh:mm:ss:S qq WW+  默认：yyyy-MM-dd
+2.today(fmt) // 获取今日起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
+3.yesterday(fmt)  // 获取昨日起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
+4.thisMonth(isSofar, fmt) // 获取本月起始时间 isSofar结束时间是否截止到今天 默认：false, fmt默认：yyyy-MM-dd 返回[start,end]
+5.prevMonth(fmt) // 获取上月起始时间 fmt默认：yyyy-MM-dd 返回[start,end]
+```
+
+---
 
 [回到顶部](#readme)

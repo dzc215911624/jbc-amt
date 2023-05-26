@@ -9,6 +9,7 @@ dist/global
 dist/optimize
 dist/string
 dist/index.js
+dist/_virtual/**
 
 # Editor directories and files
 .idea
