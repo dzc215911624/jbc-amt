@@ -113,6 +113,7 @@ export default {
         { src: 'dist/global/*', dest: 'dist' },
         { src: 'dist/optimize/*', dest: 'dist' },
         { src: 'dist/string/*', dest: 'dist' },
+        { src: 'dist/number/*', dest: 'dist' },
       ],
       flatten: true,
       verbose: true,
