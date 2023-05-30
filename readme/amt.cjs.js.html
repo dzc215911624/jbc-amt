@@ -485,14 +485,99 @@ let warp = (str, float, tag) => {
   };
 })();
 
+const reFloat = /[.]/;
+/**
+ * @desc 对比传入的浮点类型数据，获取浮点类型小数点右侧最长长度
+ * @param {Array} list 要对比的数组
+ * @return {Number} 返回小数点右侧 最长长度
+ * 例如：[0.1 , 0.22 , 0.333] ==> 3
+ */
+const getFloatRightLongest = function (list) {
+  if (!(list &amp;&amp; list.length > 1)) {
+    return list;
+  }
+  let longer;
+  try {
+    let temp = Object.values(list).reduce((prev, item) => {
+      prev.push(reFloat.test(item) ? item.toString().split('.')[1].length : 0);
+      return prev;
+    }, []);
+    longer = Math.max(...temp);
+  } catch (e) {
+    longer = 0;
+  }
+  return longer;
+};
+
+/**
+ * @desc 浮点类型 （加+）四则精度运算运算
+ * @param {Number} num1 第一个数
+ * @param {Number} num2 第一个数
+ * @param {Number} numN 第N个数
+ * @return {Number} 返回所有数相加结果
+ * 例如：floatSum(0.1,0.2,0.3) ==> 0.6
+ */
+const floatSum = function (num1, num2) {
+  if (arguments.length &lt; 2) {
+    return num1;
+  }
+  let max, list;
+  list = Object.values(arguments);
+  max = Math.pow(10, getFloatRightLongest(list));
+  if (arguments.length === 2) {
+    return Math.round(num1 * max + num2 * max) / max;
+  }
+  if (arguments.length > 2) {
+    let temp = list.reduce((prev, num) => {
+      prev += num * max;
+      return prev;
+    }, 0);
+    return Math.round(temp) / max;
+  }
+};
+const floatJia = floatSum;
+
+/**
+ * @desc 浮点类型 （减+）四则精度运算运算
+ * @param {Number} num1 第一个数
+ * @param {Number} num2 第一个数
+ * @param {Number} numN 第N个数
+ * @return {Number} 返回所有数相减结果
+ * 例如：floatMin(0.8,0.3,0.4) ==> 0.1
+ */
+const floatMin = function (num1, num2) {
+  if (arguments.length &lt; 2) {
+    return num1;
+  }
+  let max, list;
+  list = Object.values(arguments);
+  max = Math.pow(10, getFloatRightLongest(list));
+  if (arguments.length === 2) {
+    return Math.round(num1 * max - num2 * max) / max;
+  }
+  if (arguments.length > 2) {
+    let temp = list.reduce((prev, num, index) => {
+      if (index === 0) {
+        prev = num * max;
+      } else {
+        prev -= num * max;
+      }
+      return prev;
+    }, 0);
+    return Math.round(temp) / max;
+  }
+};
+const floatJian = floatMin;
+
 // 基础类
-const version = '1.1.1';
+const version = '1.0.7';
 
 // 集中在一个对象中,方便直接导出
 const jbc = {
   // 全局参数
   version,
   // 公共类
+  uuid,
   callback,
   type,
   isNull,
@@ -504,7 +589,6 @@ const jbc = {
   // 数组类
   rda,
   // 字符串类
-  uuid,
   warp,
   // 时间类
   dateFormatAny,
@@ -512,7 +596,13 @@ const jbc = {
   yesterday,
   prevMonth,
   thisMonth,
-  pastDays
+  pastDays,
+  // 数字类
+  floatSum,
+  floatMin,
+  floatJia,
+  floatJian,
+  getFloatRightLongest
 };
 
 module.exports = jbc;
@@ -526,7 +616,7 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">

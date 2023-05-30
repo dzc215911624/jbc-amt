@@ -1,5 +1,5 @@
 // 基础类
-const version = '1.1.1'
+const version = '1.0.7'
 import { type, isNull, callback } from './global/type'
 import uuid from './global/uuid'
 import isIP from './global/isIP'
@@ -19,21 +19,30 @@ import rda from './array/remove_duplicate'
 // 字符串类
 import warp from './string/warp'
 
+// 数字类
+import {
+  floatSum, floatJia,
+  floatMin, floatJian,
+  getFloatRightLongest
+} from './number/float_operation'
+
 
 // 集中在一个对象中,方便直接导出
 const jbc = {
   // 全局参数
   version,
   // 公共类
-  callback, type, isNull, qs, isIP,
+  uuid, callback, type, isNull, qs, isIP,
   // 优化类
   throttle, debounce,
   // 数组类
   rda,
   // 字符串类
-  uuid, warp,
+  warp,
   // 时间类
-  dateFormatAny, today, yesterday, prevMonth, thisMonth, pastDays
+  dateFormatAny, today, yesterday, prevMonth, thisMonth, pastDays,
+  // 数字类
+  floatSum, floatMin, floatJia, floatJian, getFloatRightLongest
 }
 
 export default jbc

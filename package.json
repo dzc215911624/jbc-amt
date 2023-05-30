@@ -1,7 +1,7 @@
 {
   "name": "jbc-amt",
-  "version": "1.0.6",
-  "description": "",
+  "version": "1.0.7",
+  "description": "any method tool",
   "main": "dist/amt.cjs.js",
   "module": "dist/amt.cjs.js",
   "devDependencies": {
@@ -31,6 +31,18 @@
   "author": "sy",
   "license": "ISC",
   "private": false,
+  "keywords": [
+    "jbc",
+    "amt",
+    "节流",
+    "防抖",
+    "浮点运算",
+    "时间格式转换",
+    "回调",
+    "qs",
+    "类型判断",
+    "换行"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dzc215911624/jbc-amt.git"

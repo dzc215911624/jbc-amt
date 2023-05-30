@@ -57,6 +57,7 @@
 <p>jbc-amt</p>
 <ul>
 <li>旨在打造一个在主流框架中例如 vue2/3、nuxt、react、next 中都可以使用的 方法集和工具类</li>
+<li>纯模块方法，如需挂载的请自行处理，例如vue下可尝试install()挂载全局方法</li>
 </ul>
 <h2>jbc-amt</h2>
 <blockquote>
@@ -86,7 +87,7 @@ console.log(amt.uuid());
 <hr>
 <h2>新增或调整</h2>
 <ul>
-<li></li>
+<li>浮点类型 （加+、减-）四则运算运算 floatSum、floatMin</li>
 </ul>
 <h2>全局变量和方法</h2>
 <pre class="prettyprint source lang-javascript"><code>// 基础类
@@ -98,14 +99,18 @@ console.log(amt.uuid());
 6.callback(fn, data)  // fn 回调函数, data 回调数据, 返回fn(data)
 
 // 数组类
-1.rda(arr, isObject, key) → {Array} // 去重
+1.rda(arr, isObject, key) → {Array} // 去重 支持对象去重， isObject 数组item是否为对象、key根据固定key去重
 
 // 优化类
 1.throttle(fn, delay, immediate) //节流  fn函数，delay间隔时间 默认300ms，immediate是否立即执行 默认true
 2.debounce(fn, delay, immediate) //防抖  fn函数，delay间隔时间 默认16.6ms，immediate是否立即执行 默认true
 
 // 字符串类
-1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，同时是String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
+1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，支持String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
+
+// 数字类
+1.floatSum(num1, num2, numN) // 浮点类型 （加+）四则精度运算运算 例如：floatSum(0.1,0.2,0.3) ==> 0.6 额外导出了floatJia,等价于floatSum
+2.floatMin(num1, num2, numN) // 浮点类型 （减-）四则精度运算运算 例如：floatMin(0.8,0.3,0.4) ==> 0.1 额外导出了floatJian,等价于floatMin
 
 </code></pre>
 <h3>时间标识对照表</h3>
@@ -179,7 +184,7 @@ console.log(amt.uuid());
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">

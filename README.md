@@ -41,7 +41,7 @@ console.log(amt.uuid());
 
 ## 新增或调整
 
--
+- 浮点类型 （加+、减-）四则运算运算 floatSum、floatMin
 
 ## 全局变量和方法
 
@@ -55,14 +55,18 @@ console.log(amt.uuid());
 6.callback(fn, data)  // fn 回调函数, data 回调数据, 返回fn(data)
 
 // 数组类
-1.rda(arr, isObject, key) → {Array} // 去重
+1.rda(arr, isObject, key) → {Array} // 去重 支持对象去重， isObject 数组item是否为对象、key根据固定key去重
 
 // 优化类
 1.throttle(fn, delay, immediate) //节流  fn函数，delay间隔时间 默认300ms，immediate是否立即执行 默认true
 2.debounce(fn, delay, immediate) //防抖  fn函数，delay间隔时间 默认16.6ms，immediate是否立即执行 默认true
 
 // 字符串类
-1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，同时是String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
+1.warp(str,float,tag) //str字符串以float字符换行，用tag换行符，支持String拓展方法，可省略str参数 例如‘text,str,aaa’.warp()
+
+// 数字类
+1.floatSum(num1, num2, numN) // 浮点类型 （加+）四则精度运算运算 例如：floatSum(0.1,0.2,0.3) ==> 0.6 额外导出了floatJia,等价于floatSum
+2.floatMin(num1, num2, numN) // 浮点类型 （减-）四则精度运算运算 例如：floatMin(0.8,0.3,0.4) ==> 0.1 额外导出了floatJian,等价于floatMin
 
 ```
 

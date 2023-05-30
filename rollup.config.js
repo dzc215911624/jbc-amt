@@ -117,6 +117,6 @@ export default {
       flatten: true,
       verbose: true,
       hook: "writeBundle" //buildStart、buildEnd、generateBundle、writeBundle 
-    }),
+    })
   ],
 }
