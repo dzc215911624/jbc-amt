@@ -1,6 +1,6 @@
 {
   "name": "jbc-amt",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "any method tool",
   "main": "dist/amt.cjs.js",
   "module": "dist/amt.cjs.js",
