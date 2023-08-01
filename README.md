@@ -5,7 +5,7 @@
 jbc-amt
 
 - 旨在打造一个在主流框架中例如 vue2/3、nuxt、react、next 中都可以使用的 方法集和工具类
-- 纯模块方法，如需挂载的请自行处理，例如vue下可尝试install()挂载全局方法
+- 纯模块方法，如需挂载的请自行处理，例如 vue 下可尝试 install()挂载全局方法
 
 ## jbc-amt
 
@@ -41,7 +41,7 @@ console.log(amt.uuid());
 
 ## 新增或调整
 
-- 浮点类型 （加+、减-）四则运算运算 floatSum、floatMin
+- 新增splitNum(num,count,char)类似转千分位方法  例如：123456789 ==> 123,456,789
 
 ## 全局变量和方法
 
@@ -67,6 +67,8 @@ console.log(amt.uuid());
 // 数字类
 1.floatSum(num1, num2, numN) // 浮点类型 （加+）四则精度运算运算 例如：floatSum(0.1,0.2,0.3) ==> 0.6 额外导出了floatJia,等价于floatSum
 2.floatMin(num1, num2, numN) // 浮点类型 （减-）四则精度运算运算 例如：floatMin(0.8,0.3,0.4) ==> 0.1 额外导出了floatJian,等价于floatMin
+3.splitNum(num,count,char) // 把数字以类似千分位形式隔开返回  num 要隔开的数 必填, count 每隔几个数 默认3, num 用什么符号隔开 默认英文逗号，
+// 例如： 123456789 ==> 123,456,789
 
 ```
 

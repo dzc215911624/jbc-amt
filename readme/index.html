@@ -57,7 +57,7 @@
 <p>jbc-amt</p>
 <ul>
 <li>旨在打造一个在主流框架中例如 vue2/3、nuxt、react、next 中都可以使用的 方法集和工具类</li>
-<li>纯模块方法，如需挂载的请自行处理，例如vue下可尝试install()挂载全局方法</li>
+<li>纯模块方法，如需挂载的请自行处理，例如 vue 下可尝试 install()挂载全局方法</li>
 </ul>
 <h2>jbc-amt</h2>
 <blockquote>
@@ -87,7 +87,7 @@ console.log(amt.uuid());
 <hr>
 <h2>新增或调整</h2>
 <ul>
-<li>浮点类型 （加+、减-）四则运算运算 floatSum、floatMin</li>
+<li>新增splitNum(num,count,char)类似转千分位方法  例如：123456789 ==&gt; 123,456,789</li>
 </ul>
 <h2>全局变量和方法</h2>
 <pre class="prettyprint source lang-javascript"><code>// 基础类
@@ -111,6 +111,8 @@ console.log(amt.uuid());
 // 数字类
 1.floatSum(num1, num2, numN) // 浮点类型 （加+）四则精度运算运算 例如：floatSum(0.1,0.2,0.3) ==> 0.6 额外导出了floatJia,等价于floatSum
 2.floatMin(num1, num2, numN) // 浮点类型 （减-）四则精度运算运算 例如：floatMin(0.8,0.3,0.4) ==> 0.1 额外导出了floatJian,等价于floatMin
+3.splitNum(num,count,char) // 把数字以类似千分位形式隔开返回  num 要隔开的数 必填, count 每隔几个数 默认3, num 用什么符号隔开 默认英文逗号，
+// 例如： 123456789 ==> 123,456,789
 
 </code></pre>
 <h3>时间标识对照表</h3>
@@ -184,7 +186,7 @@ console.log(amt.uuid());
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#splitNum">splitNum</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">

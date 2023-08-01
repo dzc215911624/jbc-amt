@@ -25,6 +25,7 @@ import {
   floatMin, floatJian,
   getFloatRightLongest
 } from './number/float_operation'
+import splitNum from './number/splitNum'
 
 
 // 集中在一个对象中,方便直接导出
@@ -42,7 +43,7 @@ const jbc = {
   // 时间类
   dateFormatAny, today, yesterday, prevMonth, thisMonth, pastDays,
   // 数字类
-  floatSum, floatMin, floatJia, floatJian, getFloatRightLongest
+  floatSum, floatMin, floatJia, floatJian, getFloatRightLongest, splitNum
 }
 
 export default jbc
