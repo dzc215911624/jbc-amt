@@ -4,6 +4,7 @@ import { type, isNull, callback } from './global/type'
 import uuid from './global/uuid'
 import isIP from './global/isIP'
 import qs from './global/qs'
+import { setStorage, getStorage, delStorage } from './global/storage'
 
 // 时间类
 import dateFormatAny from './date/dateFormatAny'
@@ -33,7 +34,7 @@ const jbc = {
   // 全局参数
   version,
   // 公共类
-  uuid, callback, type, isNull, qs, isIP,
+  uuid, callback, type, isNull, qs, isIP, setStorage, getStorage, delStorage,
   // 优化类
   throttle, debounce,
   // 数组类

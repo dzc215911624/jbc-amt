@@ -166,6 +166,79 @@ const qs = obj => {
   return str;
 };
 
+/**
+ * @desc localStrorage存 二次封装，无需关心类型问题
+ * @param {String} key 要存储的key
+ * @param {Any} val 要存储的val
+ * @return {String} 无
+ * 例如：setStorage("str1","str1的值")
+ */
+const setStorage = (key, val) => {
+  let temp = typeof val === 'object' ? JSON.stringify(val) : val;
+  temp += '|' + typeof val;
+  try {
+    let storage = window.localStorage;
+    storage.setItem(key, temp);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+/**
+ * @desc localStrorage取 二次封装，无需关心类型问题
+ * @param {String} key 要获取的key
+ * @return {String} 无
+ * 例如：getStorage("str1")
+ */
+const getStorage = key => {
+  let val = '';
+  let type = '';
+  try {
+    let storage = window.localStorage;
+    if (storage.getItem(key)) {
+      val = storage.getItem(key).split('|')[0];
+      type = storage.getItem(key).split('|')[1];
+    }
+  } catch (e) {
+    console.log(e);
+  }
+  // 因返回的全是string类型，转换输出类型
+  let temp;
+  switch (type) {
+    case 'object':
+      temp = JSON.parse(val);
+      break;
+    case 'number':
+      temp = Number(val);
+      break;
+    default:
+      if (val === 'false') {
+        temp = false;
+      } else if (val === 'true') {
+        temp = true;
+      } else {
+        temp = val;
+      }
+      break;
+  }
+  return temp;
+};
+
+/**
+ * @desc localStrorage删
+ * @param {String} key 要删除的key
+ * @return {String} 无
+ * 例如：delStorage("str1")
+ */
+const delStorage = key => {
+  try {
+    let storage = window.localStorage;
+    storage.removeItem(key);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 //字符串时间转成Date数据
 const strToDate = dateObj => {
   if ($type(dateObj) === 'string') {
@@ -619,6 +692,9 @@ const jbc = {
   isNull,
   qs,
   isIP,
+  setStorage,
+  getStorage,
+  delStorage,
   // 优化类
   throttle,
   debounce,
@@ -653,7 +729,7 @@ module.exports = jbc;
 </div>
 
 <nav class="sticky">
-  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#splitNum">splitNum</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
+  <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#callback">callback</a></li><li><a href="global.html#dateFormatAny">dateFormatAny</a></li><li><a href="global.html#debounce">debounce</a></li><li><a href="global.html#delStorage">delStorage</a></li><li><a href="global.html#floatMin">floatMin</a></li><li><a href="global.html#floatSum">floatSum</a></li><li><a href="global.html#getFloatRightLongest">getFloatRightLongest</a></li><li><a href="global.html#getStorage">getStorage</a></li><li><a href="global.html#isIP">isIP</a></li><li><a href="global.html#isNull">isNull</a></li><li><a href="global.html#pastDays">pastDays</a></li><li><a href="global.html#prevMonth">prevMonth</a></li><li><a href="global.html#qs">qs</a></li><li><a href="global.html#rda">rda</a></li><li><a href="global.html#setStorage">setStorage</a></li><li><a href="global.html#splitNum">splitNum</a></li><li><a href="global.html#thisMonth">thisMonth</a></li><li><a href="global.html#throttle">throttle</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#type">type</a></li><li><a href="global.html#warp">warp</a></li><li><a href="global.html#yesterday">yesterday</a></li></ul>
 </nav>
 
 <br class="clear">
