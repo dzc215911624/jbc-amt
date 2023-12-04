@@ -1,1 +1,0 @@
-const t=(t,e,l)=>{var n;return e=null==e?16.6:e,l=null==l||l,function(){var u=this,a=arguments;if(n&&clearTimeout(n),l){var i=!n;n=setTimeout((function(){t.apply(u,a)}),e),i&&t.apply(u,a)}else n=setTimeout((function(){t.apply(u,a)}),e)}};export{t as default};

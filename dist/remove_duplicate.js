@@ -1,1 +1,0 @@
-function e(e,r,t){if(r=void 0===r||r,e&&e.length>0){let n=new Set(e);if(e=Array.from(n),r){if(t){let r={};return e=e.reduce(((e,n)=>(n&&"object"==typeof n&&Object.hasOwn(n,t)?void 0===r[n[t]]&&(r[n[t]]=e.push(n)):e.push(n),e)),[]),Array.from(e)}return[...new Set(e.map(JSON.stringify))].map((e=>e?JSON.parse(e):e))}return e}return e}export{e as default};

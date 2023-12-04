@@ -6,6 +6,7 @@ node_modules/
 dist/array
 dist/date
 dist/global
+dist/number
 dist/optimize
 dist/string
 dist/index.js
@@ -19,13 +20,12 @@ dist/_virtual/**
 *.sln
 
 # 以下发布npm时打开，github注销
-
-# index.html
-# readme/**
-# .gitignore
-# rollup.config.js
-# src
-# server.mjs
-# .eslintrc.js
-# doc_conf.js
-# layout.tmpl 
+index.html
+readme/**
+.gitignore
+rollup.config.js
+src
+server.mjs
+.eslintrc.js
+doc_conf.js
+layout.tmpl 

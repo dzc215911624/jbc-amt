@@ -5,13 +5,17 @@
  * 例如：setStorage("str1","str1的值")
  */
 const setStorage = (key, val) => {
-  let temp = typeof val === 'object' ? JSON.stringify(val) : val;
-  temp += '|' + typeof val;
-  try {
-    let storage = window.localStorage;
-    storage.setItem(key, temp);
-  } catch (e) {
-    console.log(e);
+  if (window) {
+    try {
+      let temp = typeof val === 'object' ? JSON.stringify(val) : val;
+      temp += '|' + typeof val;
+      let storage = window.localStorage;
+      storage.setItem(key, temp);
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    return 'no support';
   }
 };
 
@@ -22,37 +26,42 @@ const setStorage = (key, val) => {
  * 例如：getStorage("str1")
  */
 const getStorage = key => {
-  let val = '';
-  let type = '';
-  try {
-    let storage = window.localStorage;
-    if (storage.getItem(key)) {
-      val = storage.getItem(key).split('|')[0];
-      type = storage.getItem(key).split('|')[1];
+  if (window) {
+    try {
+      let val = '';
+      let type = '';
+      let storage = window.localStorage;
+      if (storage.getItem(key)) {
+        val = storage.getItem(key).split('|')[0];
+        type = storage.getItem(key).split('|')[1];
+      }
+
+      // 因返回的全是string类型，转换输出类型
+      let temp;
+      switch (type) {
+      case 'object':
+        temp = JSON.parse(val);
+        break;
+      case 'number':
+        temp = Number(val);
+        break;
+      default:
+        if (val === 'false') {
+          temp = false;
+        } else if (val === 'true') {
+          temp = true;
+        } else {
+          temp = val;
+        }
+        break;
+      }
+      return temp;
+    } catch (e) {
+      console.log(e);
     }
-  } catch (e) {
-    console.log(e);
+  } else {
+    return 'no support';
   }
-  // 因返回的全是string类型，转换输出类型
-  let temp;
-  switch (type) {
-  case 'object':
-    temp = JSON.parse(val);
-    break;
-  case 'number':
-    temp = Number(val);
-    break;
-  default:
-    if (val === 'false') {
-      temp = false;
-    } else if (val === 'true') {
-      temp = true;
-    } else {
-      temp = val;
-    }
-    break;
-  }
-  return temp;
 };
 
 /**
@@ -61,11 +70,15 @@ const getStorage = key => {
  * 例如：delStorage("str1")
  */
 const delStorage = key => {
-  try {
-    let storage = window.localStorage;
-    storage.removeItem(key);
-  } catch (e) {
-    console.log(e);
+  if (window) {
+    try {
+      let storage = window.localStorage;
+      storage.removeItem(key);
+    } catch (e) {
+      console.log(e);
+    }
+  } else {
+    return 'no support';
   }
 };
 export { setStorage, getStorage, delStorage };
