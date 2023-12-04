@@ -36,21 +36,21 @@ const getStorage = key => {
   // 因返回的全是string类型，转换输出类型
   let temp;
   switch (type) {
-    case 'object':
-      temp = JSON.parse(val);
-      break;
-    case 'number':
-      temp = Number(val);
-      break;
-    default:
-      if (val === 'false') {
-        temp = false;
-      } else if (val === 'true') {
-        temp = true;
-      } else {
-        temp = val;
-      }
-      break;
+  case 'object':
+    temp = JSON.parse(val);
+    break;
+  case 'number':
+    temp = Number(val);
+    break;
+  default:
+    if (val === 'false') {
+      temp = false;
+    } else if (val === 'true') {
+      temp = true;
+    } else {
+      temp = val;
+    }
+    break;
   }
   return temp;
 };

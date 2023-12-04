@@ -41,7 +41,9 @@ console.log(amt.uuid());
 
 ## 新增或调整
 
-- 新增splitNum(num,count,char)类似转千分位方法  例如：123456789 ==> 123,456,789
+- 新增 setStorage(key,val) localstorage 二次封装存储: setStorage("aaa","aaa 的值") ==> 无
+- 新增 getStorage(key) localstorage 二次封装获取: getStorage("aaa") ==> "aaa 的值"
+- 新增 delStorage(key) localstorage 二次封装存储: delStorage("aaa")
 
 ## 全局变量和方法
 
@@ -53,6 +55,9 @@ console.log(amt.uuid());
 4.qs(obj)     // 对象转qs请求字符串 返回:请求参数拼接字符串 {id:123,name:'xiaoming'} => id=123&name=xiaoming
 5.isNull(any) // 判断是否为空 返回true/false
 6.callback(fn, data)  // fn 回调函数, data 回调数据, 返回fn(data)
+7.setStorage(key, val) // localstorage 二次封装存储，无需关心类型
+8.getStorage(key) // localstorage 二次封装获取，无需关心类型
+9.delStorage(key) // localstorage 二次封装删除
 
 // 数组类
 1.rda(arr, isObject, key) → {Array} // 去重 支持对象去重， isObject 数组item是否为对象、key根据固定key去重
